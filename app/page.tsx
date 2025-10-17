@@ -23,7 +23,13 @@ export default function LandingPage() {
 const Header = () => (
   <header className="fixed top-0 left-0 w-full bg-dark/80 backdrop-blur-lg border-b border-secondary z-50">
     <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-      <Image src="/logo.png" alt="PostGenius Logo" className="h-12 w-auto" />
+      <Image 
+  src="/logo.png" 
+  alt="PostGenius Logo" 
+  width={48}     // or actual width of logo
+  height={48}    // or actual height
+  className="h-12 w-auto" 
+/>
       <div className="hidden md:flex items-center space-x-8">
         <Link href="/" className="text-muted hover:text-light transition-colors">Home</Link>
         <Link href="#features" className="text-muted hover:text-light transition-colors">Features</Link>
@@ -61,6 +67,8 @@ const HeroSection = () => (
             src="/hero.png" 
             alt="Generated social media post"
             className="rounded-2xl  shadow-2xl w-full max-w-md"
+             width={400}     // or actual width of logo
+  height={280}
           />
         </div>
       </div>
