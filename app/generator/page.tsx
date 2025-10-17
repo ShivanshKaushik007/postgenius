@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image.js";
+import Link from "next/link";
 
 export default function HomePage() {
  
@@ -46,9 +47,9 @@ export default function HomePage() {
     <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
       <Image src="/logo.png" alt="PostGenius Logo" className="h-12 w-auto" />
       <div className="hidden md:flex items-center space-x-8">
-        <a href="/" className="text-muted hover:text-light transition-colors">Home</a>
-        <a href="/#how-it-works" className="text-muted hover:text-light transition-colors">About</a>
-        <a href="/#features" className="text-muted hover:text-light transition-colors">Features</a>
+        <Link href="/" className="text-muted hover:text-light transition-colors">Home</Link>
+        <Link href="/#how-it-works" className="text-muted hover:text-light transition-colors">About</Link>
+        <Link href="/#features" className="text-muted hover:text-light transition-colors">Features</Link>
         
       </div>
     </nav>
