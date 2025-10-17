@@ -1,6 +1,7 @@
 "use client";
 
 import { Wand2, Image as ImageIcon, Zap } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 // Main Landing Page Component
@@ -22,11 +23,11 @@ export default function LandingPage() {
 const Header = () => (
   <header className="fixed top-0 left-0 w-full bg-dark/80 backdrop-blur-lg border-b border-secondary z-50">
     <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-      <img src="/logo.png" alt="PostGenius Logo" className="h-12 w-auto" />
+      <Image src="/logo.png" alt="PostGenius Logo" className="h-12 w-auto" />
       <div className="hidden md:flex items-center space-x-8">
-        <a href="/" className="text-muted hover:text-light transition-colors">Home</a>
-        <a href="#features" className="text-muted hover:text-light transition-colors">Features</a>
-        <a href="#how-it-works" className="text-muted hover:text-light transition-colors">About</a>
+        <Link href="/" className="text-muted hover:text-light transition-colors">Home</Link>
+        <Link href="#features" className="text-muted hover:text-light transition-colors">Features</Link>
+        <Link href="#how-it-works" className="text-muted hover:text-light transition-colors">About</Link>
         <Link href='/generator' >
         <button className="bg-accent hover:bg-accent-hover text-white font-semibold bg-[#5227ff]  py-2 px-5 rounded-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-accent">
           Get Started
@@ -56,7 +57,7 @@ const HeroSection = () => (
     <div className="md:w-1/2 flex justify-center">
       <div className="[perspective:1000px]">
         <div className="transition-transform duration-500 ease-in-out hover:[transform:rotateY(0deg)_rotateX(0deg)] [transform:rotateY(-20deg)_rotateX(10deg)]">
-          <img 
+          <Image 
             src="/hero.png" 
             alt="Generated social media post"
             className="rounded-2xl  shadow-2xl w-full max-w-md"
@@ -82,7 +83,7 @@ const FeatureCard = ({ icon, title, description }: { icon: React.ReactNode; titl
 const FeaturesSection = () => (
   <section id="features" className="py-20">
     <div className="container mx-auto px-6 text-center">
-      <h2 className="text-4xl font-bold mb-12">Why You'll Love PostGenius</h2>
+      <h2 className="text-4xl font-bold mb-12">Why You will Love PostGenius</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         <FeatureCard 
           icon={<Wand2 size={32} className="text-accent"/>} 

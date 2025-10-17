@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import DotGrid from "../../src/assets/Backgrounds/DotGrid/DotGrid.jsx"
+import Image from "next/image.js";
 
 export default function HomePage() {
  
@@ -44,7 +44,7 @@ export default function HomePage() {
       {/*navbar*/}
      <header className="fixed top-0 left-0 w-full bg-dark/80 backdrop-blur-lg border-b border-secondary z-50">
     <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-      <img src="/logo.png" alt="PostGenius Logo" className="h-12 w-auto" />
+      <Image src="/logo.png" alt="PostGenius Logo" className="h-12 w-auto" />
       <div className="hidden md:flex items-center space-x-8">
         <a href="/" className="text-muted hover:text-light transition-colors">Home</a>
         <a href="/#how-it-works" className="text-muted hover:text-light transition-colors">About</a>
@@ -107,7 +107,7 @@ export default function HomePage() {
             <div className="mt-8 border-t pt-6">
               <h2 className="text-2xl font-bold mb-4 text-center text-white">Generated Post:</h2>
               <div className="flex justify-center">
-                <img src={generatedImage} alt="Generated social media post" className="rounded-lg shadow-lg" />
+                <Image src={generatedImage} alt="Generated social media post" className="rounded-lg shadow-lg" />
               </div>
               <div className="mt-4 text-center">
                   <a href={generatedImage} download="social-post.png" className="inline-block bg-[#5227ff] text-white font-bold py-2 px-4 rounded hover:bg-[#5227ff]/80">

@@ -1,9 +1,9 @@
-// lib/image-generator.ts
+
 import sharp from 'sharp';
 import path from 'path';
 import fs from 'fs/promises';
 
-// --- Helper function to create SVG text ---
+
 function createTextSvg(
     text: string,
     options: {
@@ -19,14 +19,13 @@ function createTextSvg(
     const { fontSize, fontWeight, fill, wrapWidth, fontFamily = 'Arial, sans-serif', alignment = 'start', lineHeight = 1.2 } = options;
 
     const words = text.split(' ');
-    let lines: string[] = [];
+    const lines: string[] = [];
     let currentLine = '';
 
-    // Simple word wrapping logic
+  
     for (const word of words) {
         const testLine = currentLine === '' ? word : currentLine + ' ' + word;
-        // Rough estimate of text width. A more accurate measurement needs a browser/canvas.
-        // We'll approximate by character count for simplicity.
+       
         if (testLine.length * (fontSize * 0.6) > wrapWidth && currentLine !== '') {
             lines.push(currentLine);
             currentLine = word;
@@ -34,17 +33,16 @@ function createTextSvg(
             currentLine = testLine;
         }
     }
-    lines.push(currentLine); // Add the last line
+    lines.push(currentLine); 
 
-    // Calculate dynamic height based on number of lines
-    const svgHeight = lines.length * (fontSize * lineHeight) + fontSize; // Add some padding
+   
+    const svgHeight = lines.length * (fontSize * lineHeight) + fontSize; 
 
-    let tspanElements = lines.map((line, index) => {
-        const dy = index === 0 ? fontSize : fontSize * lineHeight; // First line uses font size, subsequent lines use line height
+    const tspanElements = lines.map((line, index) => {
+        const dy = index === 0 ? fontSize : fontSize * lineHeight; 
         return `<tspan x="50%" dy="${dy}" text-anchor="${alignment === 'start' ? 'start' : alignment === 'middle' ? 'middle' : 'end'}">${line}</tspan>`;
     }).join('');
 
-    // Adjust x position for alignment if not centered
     let xOffset = alignment === 'start' ? '0' : '50%';
     if (alignment === 'end') xOffset = '100%';
 
