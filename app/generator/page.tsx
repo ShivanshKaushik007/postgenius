@@ -48,8 +48,8 @@ export default function HomePage() {
       <Image 
   src="/logo.png" 
   alt="PostGenius Logo" 
-  width={48}     // or actual width of logo
-  height={48}    // or actual height
+ width={80}   
+  height={80}
   className="h-12 w-auto" 
 />
       <div className="hidden md:flex items-center space-x-8">

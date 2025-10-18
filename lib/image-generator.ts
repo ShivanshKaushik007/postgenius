@@ -74,8 +74,8 @@ export async function generateSocialPost(
 ): Promise<Buffer> {
     try {
        
-        const productImagePath = path.join(process.cwd(), 'public/images', 'headset.jpg');
-        const logoPath = path.join(process.cwd(), 'public/images', 'logo.png');
+        const productImagePath = path.join(process.cwd(), 'assets', 'headset.jpg');
+        const logoPath = path.join(process.cwd(), 'assets', 'logo.png');
 
         
         const productImageBuffer = await fs.readFile(productImagePath);

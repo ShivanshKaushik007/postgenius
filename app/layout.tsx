@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "PostGenius",
   description: "Convert customer reviews into stunning social media posts instantly.",
+  icons: {
+    icon: "/logo-tab.png", 
+  },
 };
 
 export default function RootLayout({
