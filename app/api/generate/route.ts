@@ -1,28 +1,30 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { generateSocialPost } from '@/lib/image-generator'; 
 
-import { NextResponse } from 'next/server';
-import { extractImpactfulQuote } from '@/lib/text-processing';
-import { generateSocialPost } from '@/lib/image-generator';
+export const runtime = 'nodejs'; 
 
-export async function POST(request: Request) {
+export async function POST(req: NextRequest) {
   try {
-    
-    const body = await request.json();
-    const { review_text, customer_name, product_name } = body;
+    const { review_text, customer_name, product_name } = await req.json();
 
+   
     if (!review_text || !customer_name || !product_name) {
-      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+      return NextResponse.json({ error: 'Missing required fields: review_text, customer_name, and product_name.' }, { status: 400 });
     }
 
-    const quote = extractImpactfulQuote(review_text);
+    const imageBuffer: Buffer = await generateSocialPost(review_text, customer_name, product_name);
 
-    const imageBuffer = await generateSocialPost(quote, customer_name, product_name);
+    
+    return new NextResponse(imageBuffer, {
+      headers: {
+        'Content-Type': 'image/png',
+        'Cache-Control': 'no-cache, no-store, must-revalidate', 
+      },
+      status: 200,
+    });
 
-    const base64Image = imageBuffer.toString('base64');
-
-    return NextResponse.json({ image: base64Image });
-
-  } catch (error) {
-    console.error(error);
-    return NextResponse.json({ error: 'Failed to generate image' }, { status: 500 });
+  } catch (e: any) {
+    console.error('API Error in /api/generate:', e.message);
+    return NextResponse.json({ error: `Failed to generate image: ${e.message}` }, { status: 500 });
   }
 }
