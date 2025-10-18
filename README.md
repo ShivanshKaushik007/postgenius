@@ -5,6 +5,7 @@ Instantly transform positive customer reviews into beautiful, shareable social m
 PostGenius is a **full-stack Next.js application** that automates the creation of social proof, helping you build brand trust with engaging visual content.
 
 ---
+![screenshot](/image.png)
 
 ## ✨ Overview
 
