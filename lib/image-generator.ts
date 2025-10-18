@@ -19,7 +19,7 @@ function createTextSvg(
     const { fontSize, fontWeight, fill, wrapWidth, fontFamily = 'Arial, sans-serif', alignment = 'start', lineHeight = 1.2 } = options;
 
     const words = text.split(' ');
-    let lines: string[] = [];
+    const lines: string[] = [];
     let currentLine = '';
 
     // Simple word wrapping logic
@@ -39,7 +39,7 @@ function createTextSvg(
     // Calculate dynamic height based on number of lines
     const svgHeight = lines.length * (fontSize * lineHeight) + fontSize; // Add some padding
 
-    let tspanElements = lines.map((line, index) => {
+    const tspanElements = lines.map((line, index) => {
         const dy = index === 0 ? fontSize : fontSize * lineHeight; // First line uses font size, subsequent lines use line height
         return `<tspan x="50%" dy="${dy}" text-anchor="${alignment === 'start' ? 'start' : alignment === 'middle' ? 'middle' : 'end'}">${line}</tspan>`;
     }).join('');
