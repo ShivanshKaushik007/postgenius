@@ -62,16 +62,21 @@ Follow these steps to set up **PostGenius** locally.
    npm install
    ```
 
-3. **Add your asset images:**
+3. **Add your asset images & Setup Unsplash API:**
    - Create an `images` folder inside the `public` directory.  
-   - Place your **product image** inside and name it `headset.jpg`.  
    - Place your **logo** inside and name it `logo.png`.  
 
    Final paths:
    ```
-   public/images/headset.jpg
    public/images/logo.png
    ```
+   - Create account on Unsplash and get you API access Key
+   - Create a `.env.local` file at the root of you project
+     
+   ```
+   UNSPLASH_ACCESS_KEY="Paste your access key here"
+   ```
+Sorry but can't Share mine :)   
 
 4. **Run the development server:**
    ```bash
