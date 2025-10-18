@@ -33,10 +33,14 @@ async function fetchUnsplashImage(query: string): Promise<Buffer | null> {
     const arrayBuffer = await imageResponse.arrayBuffer();
     return Buffer.from(arrayBuffer);
 
-  } catch (error: any) {
+  } catch (error: unknown) {
+  if (error instanceof Error) {
     console.error("Failed to fetch from Unsplash:", error.message);
-    return null;
+  } else {
+    console.error("An unknown error occurred while fetching from Unsplash.");
   }
+  return null;
+}
 }
 
 
@@ -54,7 +58,7 @@ function createTextSvg(
 ): Buffer {
     const { fontSize, fontWeight, fill, wrapWidth, fontFamily = 'Inter, sans-serif', alignment = 'start', lineHeight = 1.2 } = options;
     const words = text.split(' ');
-    let lines: string[] = [];
+    const lines: string[] = [];
     let currentLine = '';
 
     for (const word of words) {
@@ -104,7 +108,7 @@ export async function generateSocialPost(
             try {
                 productImageBuffer = await fs.readFile(fallbackImagePath);
             } catch (fallbackError) {
-                console.error("Fallback image not found! Creating a plain background.");
+  console.error("Fallback image not found! Creating a plain background.", fallbackError);
                 productImageBuffer = await sharp({
                     create: { width: 1080, height: 1080, channels: 4, background: { r: 30, g: 30, b: 35, alpha: 1 } }
                 }).png().toBuffer();

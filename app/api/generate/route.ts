@@ -23,8 +23,12 @@ export async function POST(req: NextRequest) {
       status: 200,
     });
 
-  } catch (e: any) {
-    console.error('API Error in /api/generate:', e.message);
-    return NextResponse.json({ error: `Failed to generate image: ${e.message}` }, { status: 500 });
+  } catch (e: unknown) {
+  let errorMessage = 'An unknown error occurred.';
+  if (e instanceof Error) {
+    errorMessage = e.message;
   }
+  console.error('API Error in /api/generate:', errorMessage);
+  return NextResponse.json({ error: `Failed to generate image: ${errorMessage}` }, { status: 500 });
+}
 }
