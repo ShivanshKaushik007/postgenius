@@ -96,7 +96,7 @@ Sorry but can't Share mine :)
    - Calls `generateSocialPost`.  
 4. **Image Generation (`lib/image-generator.ts`)**  
    - Randomly selects a template.  
-   - Loads assets (`headset.jpg`, `logo.png`).  
+   - Loads assets ( `logo.png`).  
    - Converts text into SVG.  
    - Uses `sharp` to composite final PNG.  
 5. **API Response** – Returns the PNG image buffer.  
