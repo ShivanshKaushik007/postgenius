@@ -1,36 +1,112 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# 🚀 PostGenius: Instant Review-to-Image Generator
 
-First, run the development server:
+Instantly transform positive customer reviews into beautiful, shareable social media graphics.  
+PostGenius is a **full-stack Next.js application** that automates the creation of social proof, helping you build brand trust with engaging visual content.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✨ Overview
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+In today's market, **social proof is everything**.  
+Manually creating graphics for every positive review is **time-consuming and tedious**.  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**PostGenius** solves this by providing:
+- A simple **web interface** to input review details.  
+- A **powerful backend service** that dynamically generates high-quality images using professional templates.  
 
-## Learn More
+This project leverages the **high-performance `sharp` library** for server-side image manipulation, all wrapped in a modern, type-safe Next.js application.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🌟 Key Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+-  **Dynamic Image Generation** – Creates PNG images on-the-fly from form inputs.  
+-  **Multiple Design Templates** – Randomly selects from a variety of attractive templates.  
+-  **High-Performance Backend** – Uses the `sharp` library for incredibly fast image processing.  
+-  **SVG for Text Rendering** – Generates crisp, scalable text overlays.  
+-  **Modern Tech Stack** – Built with Next.js, React, and TypeScript.  
+-  **Easy to Customize** – Add your own templates, fonts, and branding.   
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🛠️ Tech Stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Framework:** Next.js (App Router)  
+- **Language:** TypeScript  
+- **Image Processing:** Sharp  
+- **Styling:** Tailwind CSS  
+- **Deployment:** Render
+
+---
+
+## 🚀 Getting Started
+
+Follow these steps to set up **PostGenius** locally.
+
+### Prerequisites
+- Node.js **18.17 or later**
+- npm (comes with Node.js)
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/ShivanshKaushik007/postgenius.git
+   cd postgenius
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Add your asset images:**
+   - Create an `images` folder inside the `public` directory.  
+   - Place your **product image** inside and name it `headset.jpg`.  
+   - Place your **logo** inside and name it `logo.png`.  
+
+   Final paths:
+   ```
+   public/images/headset.jpg
+   public/images/logo.png
+   ```
+
+4. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser 
+
+---
+
+## ⚙️ How It Works
+
+1. **Frontend (`app/generate/page.tsx`)** – User enters review text, customer name, and product name.  
+2. **API Request** – A POST request is sent to `/api/generate` with form data.  
+3. **Backend (`app/api/generate/route.ts`)** – Runs on Node.js runtime for `sharp`.  
+   - Receives JSON payload.  
+   - Calls `generateSocialPost`.  
+4. **Image Generation (`lib/image-generator.ts`)**  
+   - Randomly selects a template.  
+   - Loads assets (`headset.jpg`, `logo.png`).  
+   - Converts text into SVG.  
+   - Uses `sharp` to composite final PNG.  
+5. **API Response** – Returns the PNG image buffer.  
+6. **Frontend Display** – Renders the image via `URL.createObjectURL`.  
+   - User can preview or download the generated image.  
+
+---
+
+## 🎨 Customization
+
+- **Templates** – Modify `lib/image-generator.ts` to add or edit templates.  
+- **Fonts & Colors** – Adjust text styles in `createTextSvg` function.  
+- **Frontend UI** – Update `app/page.tsx` & `app/generate/page.tsx` with Tailwind CSS classes for layout and styling.  
+
+---
+
+
+
+Made By Shivansh kaushik for Minitaka
