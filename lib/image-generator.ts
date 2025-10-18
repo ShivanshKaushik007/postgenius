@@ -69,8 +69,7 @@ function createTextSvg(
 
 export async function generateSocialPost(
     reviewQuote: string,
-    customerName: string,
-    productName: string
+    customerName: string
 ): Promise<Buffer> {
     try {
        
