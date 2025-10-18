@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
     const imageBuffer: Buffer = await generateSocialPost(review_text, customer_name, product_name);
 
     
-    return new NextResponse(imageBuffer, {
+    return new NextResponse(imageBuffer.buffer, {
       headers: {
         'Content-Type': 'image/png',
         'Cache-Control': 'no-cache, no-store, must-revalidate', 
@@ -31,4 +31,4 @@ export async function POST(req: NextRequest) {
   console.error('API Error in /api/generate:', errorMessage);
   return NextResponse.json({ error: `Failed to generate image: ${errorMessage}` }, { status: 500 });
 }
-}
+} 
